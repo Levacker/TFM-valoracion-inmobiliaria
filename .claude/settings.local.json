@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -c \"import sys; print\\(sys.executable\\)\")",
+      "Bash(pip3 list *)",
+      "Bash(conda run -n tfm311 python -c ' *)",
+      "Bash(python3 -c \"import sys,json; nb=json.load\\(sys.stdin\\); print\\(len\\(nb['cells']\\), 'cells'\\)\")",
+      "Bash(conda run *)"
+    ]
+  }
+}
