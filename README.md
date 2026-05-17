@@ -42,19 +42,91 @@ tfm-valoracion-inmobiliaria/
 
 ## Instalación
 
+Recomendado: usar **Conda con Python 3.11** para evitar problemas de compilación en macOS ARM (por ejemplo con `matplotlib` en Python 3.13).
+
+### Opción recomendada (Conda)
+
 ```bash
 # Clonar el repositorio
-git clone <url-del-repo>
+git clone https://github.com/Levacker/TFM-valoracion-inmobiliaria.git
 cd tfm-valoracion-inmobiliaria
 
-# Crear entorno virtual
-python -m venv .venv
-source .venv/bin/activate      # Linux/macOS
-# .venv\Scripts\activate       # Windows
+# Crear entorno con Python 3.11
+conda create -n tfm311 python=3.11 -y
+conda activate tfm311
 
-# Instalar dependencias
+# Verificar versión de Python (debe ser 3.11.x)
+python --version
+
+# Instalar dependencias del proyecto
+pip install -U pip setuptools wheel
 pip install -r requirements.txt
 ```
+
+### Opción alternativa (venv)
+
+Si prefieres `venv`, asegúrate igualmente de usar Python 3.11.
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate      # Linux/macOS
+# .venv\Scripts\activate       # Windows
+pip install -U pip setuptools wheel
+pip install -r requirements.txt
+```
+
+### Solución rápida de errores comunes
+
+- Si ves errores al instalar `matplotlib` o `shap` con mensajes de compilación (`meson`, `metadata-generation-failed`, etc.), normalmente estás en Python 3.13 o en un entorno distinto al esperado.
+- Comprueba:
+  - `which python` apunta al entorno activo (`.../envs/tfm311/bin/python` en conda).
+  - `python --version` muestra `3.11.x`.
+- Si estabas en otro entorno, desactívalo (`deactivate`) y vuelve a activar conda (`conda activate tfm311`).
+
+---
+
+## Preparación del entorno (Adriana) para ejecutar notebooks
+
+Pasos recomendados de principio a fin:
+
+```bash
+# 1) Clonar repo
+git clone https://github.com/Levacker/TFM-valoracion-inmobiliaria.git
+cd tfm-valoracion-inmobiliaria
+
+# 2) Crear y activar entorno conda
+conda create -n tfm311 python=3.11 -y
+conda activate tfm311
+
+# 3) Instalar dependencias
+python -m pip install -U pip setuptools wheel
+python -m pip install -r requirements.txt
+
+# 4) Instalar kernel de Jupyter para este entorno
+python -m ipykernel install --user --name tfm311 --display-name "Python (tfm311)"
+
+# 5) Abrir Jupyter
+jupyter notebook
+```
+
+Dentro de Jupyter:
+- Abrir el notebook que toque (por ejemplo `notebooks/01_EDA.ipynb`).
+- Seleccionar kernel: `Python (tfm311)`.
+- Ejecutar celdas en orden.
+
+Comprobación rápida antes de ejecutar:
+
+```bash
+which python
+python --version
+```
+
+Debe mostrar:
+- Un path tipo `.../anaconda3/envs/tfm311/bin/python`.
+- Versión `Python 3.11.x`.
+
+Nota importante:
+- Clonar el repo **no** copia el entorno. Cada persona debe crear su propio entorno local con los pasos anteriores.
 
 ---
 
