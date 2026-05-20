@@ -6,7 +6,11 @@
       "Bash(pip3 list *)",
       "Bash(conda run -n tfm311 python -c ' *)",
       "Bash(python3 -c \"import sys,json; nb=json.load\\(sys.stdin\\); print\\(len\\(nb['cells']\\), 'cells'\\)\")",
-      "Bash(conda run *)"
+      "Bash(conda run *)",
+      "Bash(python3 -c \"import pdfplumber; pdf = pdfplumber.open\\('/Users/jesusdelmoral/Documents/master/TFM/tfm-valoracion-inmobiliaria/plantilla_grupal.pdf'\\); [print\\(f'=== PAGE {i+1} ===\\\\n{p.extract_text\\(\\)}'\\) for i, p in enumerate\\(pdf.pages\\)]\")",
+      "Bash(python3 -c \"import PyPDF2; r = PyPDF2.PdfReader\\('/Users/jesusdelmoral/Documents/master/TFM/tfm-valoracion-inmobiliaria/plantilla_grupal.pdf'\\); [print\\(f'=== PAGE {i+1} ===\\\\n{r.pages[i].extract_text\\(\\)}'\\) for i in range\\(len\\(r.pages\\)\\)]\")",
+      "Bash(pip install *)",
+      "Bash(pip3 install *)"
     ]
   }
 }
