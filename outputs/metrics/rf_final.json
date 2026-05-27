@@ -1,11 +1,11 @@
 {
   "modelo": "RF Final (con features espaciales, tuning)",
-  "RMSE_log": 0.171462,
-  "MAE_log": 0.121325,
-  "R2": 0.897166,
-  "RMSE_orig": 138005.82,
-  "MAE_orig": 69380.81,
-  "moran_i_residuos": 0.05129,
+  "RMSE_log": 0.174026,
+  "MAE_log": 0.124135,
+  "R2": 0.894068,
+  "RMSE_orig": 140492.89,
+  "MAE_orig": 71636.97,
+  "moran_i_residuos": 0.079748,
   "moran_i_pvalue": 0.001,
   "best_params": {
     "n_estimators": 500,
