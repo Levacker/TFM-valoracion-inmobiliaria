@@ -5,6 +5,7 @@
   "R2": 0.894068,
   "RMSE_orig": 140492.89,
   "MAE_orig": 71636.97,
+  "MAPE_orig": 0.126,
   "moran_i_residuos": 0.079748,
   "moran_i_pvalue": 0.001,
   "best_params": {
