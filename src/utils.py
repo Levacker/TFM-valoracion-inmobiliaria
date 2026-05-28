@@ -9,7 +9,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import joblib
 from sklearn.neighbors import NearestNeighbors
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score, mean_absolute_percentage_error
 
 
 OUTPUTS_DIR = os.path.join(os.path.dirname(__file__), "..", "outputs")
@@ -117,15 +117,21 @@ def evaluate_model(y_true: np.ndarray, y_pred: np.ndarray, model_name: str) -> d
     Evalúa un modelo en escala logarítmica y original.
     y_true y y_pred deben estar en escala log.
     """
+    # Métricas en escala logarítmica
     rmse_log = np.sqrt(mean_squared_error(y_true, y_pred))
     mae_log  = mean_absolute_error(y_true, y_pred)
     r2       = r2_score(y_true, y_pred)
 
+    # Retransformación a escala original (dólares)
     y_true_orig = np.expm1(y_true)
     y_pred_orig = np.expm1(y_pred)
+
+    # Métricas en escala original
     rmse_orig = np.sqrt(mean_squared_error(y_true_orig, y_pred_orig))
     mae_orig  = mean_absolute_error(y_true_orig, y_pred_orig)
+    mape_orig = mean_absolute_percentage_error(y_true_orig, y_pred_orig)
 
+    # Guardado en diccionario
     metrics = {
         "modelo":    model_name,
         "RMSE_log":  round(rmse_log, 6),
@@ -133,17 +139,20 @@ def evaluate_model(y_true: np.ndarray, y_pred: np.ndarray, model_name: str) -> d
         "R2":        round(r2, 6),
         "RMSE_orig": round(rmse_orig, 2),
         "MAE_orig":  round(mae_orig, 2),
+        "MAPE_orig": round(mape_orig, 4),
     }
 
-    print(f"\n{'='*45}")
+    # Impresión por pantalla
+    print(f"\n{'='*50}")
     print(f"  {model_name}")
-    print(f"{'='*45}")
+    print(f"{'='*50}")
     print(f"  RMSE (log):    {metrics['RMSE_log']:.4f}")
     print(f"  MAE  (log):    {metrics['MAE_log']:.4f}")
     print(f"  R²:            {metrics['R2']:.4f}")
     print(f"  RMSE (€/$):    {metrics['RMSE_orig']:,.0f}")
     print(f"  MAE  (€/$):    {metrics['MAE_orig']:,.0f}")
-    print(f"{'='*45}\n")
+    print(f"  MAPE (%):      {metrics['MAPE_orig'] * 100:.2f}%")
+    print(f"{'='*50}\n")
 
     return metrics
 

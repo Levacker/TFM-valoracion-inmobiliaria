@@ -1,0 +1,12 @@
+{
+  "modelo": "SLX (Econometría Espacial)",
+  "RMSE_log": 0.262859,
+  "MAE_log": 0.205559,
+  "R2": 0.758315,
+  "RMSE_orig": 230268.99,
+  "MAE_orig": 114549.58,
+  "MAPE_orig": 0.2139,
+  "moran_i_residuos": 0.506008,
+  "moran_i_pvalue": 0.001,
+  "best_params": "OLS (Sin hiperparámetros)"
+}
