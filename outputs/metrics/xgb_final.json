@@ -1,0 +1,18 @@
+{
+  "modelo": "XGB Final (espacial + tuning)",
+  "RMSE_log": 0.159872,
+  "MAE_log": 0.114365,
+  "R2": 0.910599,
+  "RMSE_orig": 116015.02,
+  "MAE_orig": 64031.23,
+  "MAPE_orig": 0.116,
+  "moran_i_residuos": 0.038352,
+  "moran_i_pvalue": 0.001,
+  "best_params": {
+    "subsample": 0.7,
+    "n_estimators": 500,
+    "max_depth": 5,
+    "learning_rate": 0.05,
+    "colsample_bytree": 0.8
+  }
+}
